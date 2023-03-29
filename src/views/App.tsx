@@ -1,7 +1,18 @@
-import { useState } from 'react';
-import { LandingPage } from './MainPage/LandingPage';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { LandingPage } from './LandingPage/LandingPage';
+import { Cringe } from './LandingPage/Cringe';
 
 export const App: React.FC = () => {
-    const [isNah, setIsNah] = useState(false);
-    return <LandingPage isNah={isNah} setIsNah={setIsNah} />;
+    return (
+        <Router>
+            <Switch>
+                <Route path="/" exact>
+                    <LandingPage />
+                </Route>
+                <Route path="/cringe">
+                    <Cringe />
+                </Route>
+            </Switch>
+        </Router>
+    );
 };

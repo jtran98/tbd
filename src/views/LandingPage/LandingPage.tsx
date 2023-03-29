@@ -1,25 +1,43 @@
 import { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
-import { COLORS, Column, Row } from '../utils/components';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import {
+    BigText,
+    COLORS,
+    Column,
+    HugeText,
+    Row,
+    SmallText
+} from '../utils/components';
 import background from './assets/background.mp3';
 
-interface IProps {
-    isNah: boolean;
-    setIsNah: (state: boolean) => void;
-}
+const YeaText: React.FC<{ yeaCount: number }> = ({ yeaCount }) => {
+    if (yeaCount === 1) {
+        return <HeroText>you live in toronto (or close by)???</HeroText>;
+    }
+    return <HeroText>you like french bread games???</HeroText>;
+};
 
-export const LandingPage: React.FC<IProps> = ({ isNah, setIsNah }) => {
+export const LandingPage: React.FC = () => {
     const backgroundSong = new Audio(background);
     backgroundSong.volume = 0.1;
     backgroundSong.loop = true;
 
+    const [backgroundSongIsPlaying, setBackgroundSongIsPlaying] =
+        useState<boolean>(false);
+
+    const [yeaCount, setYeaCount] = useState<number>(0);
+
     const handleOnYea = () => {
-        backgroundSong.play();
-        //backgroundSong.pause();
+        console.log(backgroundSong.paused);
+        if (!backgroundSongIsPlaying) {
+            backgroundSong.play();
+            setBackgroundSongIsPlaying(true);
+        }
+        setYeaCount(yeaCount + 1);
     };
 
     const handleOnNah = () => {
-        setIsNah(true);
         backgroundSong.pause();
     };
 
@@ -28,35 +46,34 @@ export const LandingPage: React.FC<IProps> = ({ isNah, setIsNah }) => {
             <Column $maxWidth>
                 <Title>Hello gamer</Title>
                 <CoolFont>what's good</CoolFont>
-                <HeroText>you like french bread games???</HeroText>
-                <Row $maxWidth $centered>
+                <YeaText yeaCount={yeaCount} />
+                <Row $centered>
                     <button onClick={handleOnYea}>yea</button>
-                    <button onClick={handleOnNah}>nah</button>
+                    <Link to="/cringe" onClick={handleOnNah}>
+                        nah
+                    </Link>
                 </Row>
             </Column>
         </>
     );
 };
 
-const Title = styled.div`
+const Title = styled(BigText)`
     display: flex;
     justify-content: center;
     font-family: Comic Sans MS, Comic Sans, cursive;
-    font-size: 86px;
 `;
 
-const HeroText = styled.div`
-    font-size: 80px;
+const HeroText = styled(HugeText)`
     width: 100%;
     display: flex;
     justify-content: center;
     color: ${COLORS.cool};
 `;
 
-const CoolFont = styled.div`
+const CoolFont = styled(SmallText)`
     text-align: center;
     text-decoration: underline;
-    font-size: 32px;
     font-family: Comic Sans MS, Comic Sans, cursive;
     letter-spacing: 5px;
     background: linear-gradient(
