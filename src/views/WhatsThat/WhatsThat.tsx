@@ -1,17 +1,10 @@
 import styled from 'styled-components';
-import {
-    BigText,
-    COLORS,
-    Column,
-    HugeText,
-    MediumText,
-    Row,
-    SmallText
-} from '../utils/components';
+import { BigText, COLORS, Column, Row, SmallText } from '../utils/components';
 
 import TheLadies from '../assets/TheLadies.png';
 import Kouma from '../assets/Kouma.png';
 import Knuckles from '../assets/Knuckles.png';
+import { ImageCarousel } from '../utils/ImageCarousel';
 
 interface IProps {
     backgroundSong: HTMLAudioElement;
@@ -22,8 +15,14 @@ export const WhatsThat: React.FC<IProps> = ({ backgroundSong }) => {
         'top 8 evo player',
         'vtuber',
         'kangel simps',
-        '1 am weeb karaoke'
+        '1 am weeb karaoke',
+        'opportunities for dating',
+        'standteching',
+        'its near alot of food',
+        'the bathrooms are clean',
+        'jesus!!! (amen)'
     ];
+
     return (
         <Column $centered>
             <Row>
@@ -48,6 +47,8 @@ export const WhatsThat: React.FC<IProps> = ({ backgroundSong }) => {
             </a>
             <LadiesImage src={TheLadies} />
             <KoumaImage src={Kouma} />
+            the peeps
+            <ImageCarousel />
         </Column>
     );
 };
