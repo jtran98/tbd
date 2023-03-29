@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { LandingPage } from './LandingPage/LandingPage';
 import { Cringe } from './LandingPage/Cringe';
 import { useState } from 'react';
-import background from './assets/background.mp3';
+import Background from './assets/Background.mp3';
 import { WhatsThat } from './WhatsThat/WhatsThat';
 export const App: React.FC = () => {
-    const [backgroundSong] = useState(new Audio(background));
+    const [backgroundSong] = useState(new Audio(Background));
     backgroundSong.volume = 0.1;
     backgroundSong.loop = true;
 

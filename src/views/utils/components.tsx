@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 export enum COLORS {
-    cool = '#8CF5F9'
+    cool = '#8CF5F9',
+    orange = '#c75600',
+    darkPurple = '#610095',
+    lightPurple = '#f4deff'
 }
 
 export const HugeText = styled.div<{ $font?: string }>`
-    font-size: 8em;
+    font-size: 7em;
     ${({ $font }) =>
         $font
             ? css`
@@ -16,7 +19,7 @@ export const HugeText = styled.div<{ $font?: string }>`
 `;
 
 export const BigText = styled.div<{ $font?: string }>`
-    font-size: 6em;
+    font-size: 5em;
     ${({ $font }) =>
         $font
             ? css`
@@ -26,7 +29,7 @@ export const BigText = styled.div<{ $font?: string }>`
 `;
 
 export const MediumText = styled.div<{ $font?: string }>`
-    font-size: 4em;
+    font-size: 3em;
     ${({ $font }) =>
         $font
             ? css`
