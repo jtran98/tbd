@@ -33,12 +33,19 @@ export const WhatsThat: React.FC<IProps> = ({ backgroundSong }) => {
                 </BigText>
             </Row>
             <Incentives>
-                <>why not check us out? we got: </>
+                why not check us out? we got:
                 {incentives.map(incentive => (
                     <IncentiveItem>{incentive}</IncentiveItem>
                 ))}
                 <KnucklesImage src={Knuckles} />
             </Incentives>
+            <a
+                href="https://discord.gg/bqUwyNX"
+                target="_blank"
+                rel="noreferrer"
+            >
+                join the discord for more information
+            </a>
             <LadiesImage src={TheLadies} />
             <KoumaImage src={Kouma} />
         </Column>

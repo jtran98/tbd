@@ -18,7 +18,7 @@ export const App: React.FC = () => {
                 <Route path="/cringe">
                     <Cringe />
                 </Route>
-                <Route path="/whatsthat">
+                <Route path="/info">
                     <WhatsThat backgroundSong={backgroundSong} />
                 </Route>
             </Switch>

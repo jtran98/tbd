@@ -54,10 +54,7 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
                     {yeaCount <= 1 ? (
                         <button onClick={handleOnYea}>yea</button>
                     ) : (
-                        <Link
-                            to="/whatsthat"
-                            style={{ textDecoration: 'none' }}
-                        >
+                        <Link to="/info" style={{ textDecoration: 'none' }}>
                             whats that
                         </Link>
                     )}
