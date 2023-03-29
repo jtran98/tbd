@@ -74,7 +74,6 @@ const IncentiveItem = styled.div`
     }
     color: ${COLORS.orange};
     background: ${COLORS.cool};
-
     display: flex;
     justify-content: flex-start;
     width: fit-content;
@@ -85,7 +84,7 @@ const IncentiveItem = styled.div`
 const LadiesImage = styled.img`
     position: absolute;
     transform: rotate(14deg);
-    right: 30px;
+    right: 40px;
     top: 90px;
     z-index: -1;
 `;

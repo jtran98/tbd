@@ -7,6 +7,7 @@ import {
     Column,
     HugeText,
     Row,
+    ShakeWrapper,
     SmallText
 } from '../utils/components';
 import FullMika from '../assets/FullMika.png';
@@ -18,17 +19,25 @@ interface IProps {
 const MAX_YEA = 3;
 
 const YeaText: React.FC<{ yeaCount: number }> = ({ yeaCount }) => {
+    if (yeaCount === 0) {
+        return <HeroText>you like french bread games?</HeroText>;
+    }
     if (yeaCount === 1) {
-        return <HeroText>you live in toronto (or close by)??</HeroText>;
+        return (
+            <ShakeWrapper $shakeSpeed={1.5}>
+                <HeroText>you live in toronto (or close by)??</HeroText>
+            </ShakeWrapper>
+        );
     }
     if (yeaCount === 2) {
-        return <HeroText>you're interested in local events???</HeroText>;
-    }
-    if (yeaCount >= MAX_YEA) {
-        return <HeroText>then come on down to tbd!!!!</HeroText>;
+        return (
+            <ShakeWrapper $shakeSpeed={1}>
+                <HeroText>you're interested in local events???</HeroText>
+            </ShakeWrapper>
+        );
     }
 
-    return <HeroText>you like french bread games?</HeroText>;
+    return null;
 };
 
 export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
@@ -43,16 +52,6 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
             setBackgroundSongIsPlaying(true);
         }
         setYeaCount(yeaCount + 1);
-        const response = await fetch(
-            'https://api.challonge.com/v1/tournaments?api_key=0eDRIrJvJuC5alOArOMwVthajfmvdjiEWfv1b1T7',
-            {
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        );
-        console.log(response);
     };
 
     const handleOnNah = () => {
@@ -61,8 +60,8 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
     };
 
     return (
-        <>
-            <Column $maxWidth>
+        <Container>
+            <Column $maxWidth $maxHeight>
                 <Title>Hey gamer</Title>
                 <CoolFont>what's good</CoolFont>
                 <YeaText yeaCount={yeaCount} />
@@ -70,11 +69,19 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
                     {yeaCount < MAX_YEA ? (
                         <button onClick={handleOnYea}>yea</button>
                     ) : (
-                        <Link to="/info" style={{ textDecoration: 'none' }}>
-                            whats that
-                        </Link>
+                        <>
+                            <SpeechBubble>
+                                <ShakeWrapper $shakeSpeed={0.25}>
+                                    <TBDText>
+                                        then come on down to tbd!!!!
+                                    </TBDText>
+                                </ShakeWrapper>
+                            </SpeechBubble>
+                            <Link to="/info" style={{ textDecoration: 'none' }}>
+                                whats that
+                            </Link>
+                        </>
                     )}
-
                     <Link
                         to="/cringe"
                         onClick={handleOnNah}
@@ -86,9 +93,51 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
             </Column>
             <Image $visibilityStage={yeaCount} src={FullMika} />
             {yeaCount === 0 ? <SneakyText>shhhhhhhhhhhhh</SneakyText> : null}
-        </>
+        </Container>
     );
 };
+
+const TBDText = styled(BigText)`
+    color: ${COLORS.cool};
+`;
+
+const SpeechBubble = styled.div`
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    animation: fadeIn 0.8s ease-out;
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    border-radius: 4em;
+    background: ${COLORS.darkPurple};
+    padding: 30px 100px;
+    :after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 50px dotted transparent;
+        border-right-color: ${COLORS.darkPurple};
+        border-left: 0;
+        border-bottom: 0;
+        margin-top: 20px;
+        margin-left: 0;
+    }
+    z-index: 1;
+`;
+
+const Container = styled.div`
+    background: #003da8;
+    margin: -8px;
+`;
 
 const SneakyText = styled(SmallText)`
     position: absolute;
@@ -102,7 +151,6 @@ const Image = styled.img<{ $visibilityStage: number }>`
         css`calc(100% - ${$visibilityStage} * 25%)`};
     transition: all 1s;
     transition-timing-function: ease-out;
-    overflow-y: hidden;
 `;
 
 const Title = styled(BigText)`
@@ -112,10 +160,10 @@ const Title = styled(BigText)`
 `;
 
 const HeroText = styled(HugeText)`
-    width: 100%;
     display: flex;
     justify-content: center;
     color: ${COLORS.cool};
+    width: 99%;
 `;
 
 const CoolFont = styled(SmallText)`
