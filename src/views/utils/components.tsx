@@ -5,20 +5,44 @@ export enum COLORS {
     cool = '#8CF5F9'
 }
 
-export const HugeText = styled.div`
+export const HugeText = styled.div<{ $font?: string }>`
     font-size: 8em;
+    ${({ $font }) =>
+        $font
+            ? css`
+                  font-family: ${$font};
+              `
+            : ''}
 `;
 
-export const BigText = styled.div`
+export const BigText = styled.div<{ $font?: string }>`
     font-size: 6em;
+    ${({ $font }) =>
+        $font
+            ? css`
+                  font-family: ${$font};
+              `
+            : ''}
 `;
 
-export const MediumText = styled.div`
+export const MediumText = styled.div<{ $font?: string }>`
     font-size: 4em;
+    ${({ $font }) =>
+        $font
+            ? css`
+                  font-family: ${$font};
+              `
+            : ''}
 `;
 
-export const SmallText = styled.div`
+export const SmallText = styled.div<{ $font?: string }>`
     font-size: 2em;
+    ${({ $font }) =>
+        $font
+            ? css`
+                  font-family: ${$font};
+              `
+            : ''}
 `;
 
 export const Column = styled.div<{

@@ -9,27 +9,29 @@ import {
     Row,
     SmallText
 } from '../utils/components';
-import background from './assets/background.mp3';
+
+interface IProps {
+    backgroundSong: HTMLAudioElement;
+}
 
 const YeaText: React.FC<{ yeaCount: number }> = ({ yeaCount }) => {
     if (yeaCount === 1) {
-        return <HeroText>you live in toronto (or close by)???</HeroText>;
+        return <HeroText>you live in toronto (or close by)??</HeroText>;
     }
-    return <HeroText>you like french bread games???</HeroText>;
+    if (yeaCount >= 2) {
+        return <HeroText>then come on down to tbd!!!</HeroText>;
+    }
+
+    return <HeroText>you like french bread games?</HeroText>;
 };
 
-export const LandingPage: React.FC = () => {
-    const backgroundSong = new Audio(background);
-    backgroundSong.volume = 0.1;
-    backgroundSong.loop = true;
-
+export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
     const [backgroundSongIsPlaying, setBackgroundSongIsPlaying] =
         useState<boolean>(false);
 
     const [yeaCount, setYeaCount] = useState<number>(0);
 
     const handleOnYea = () => {
-        console.log(backgroundSong.paused);
         if (!backgroundSongIsPlaying) {
             backgroundSong.play();
             setBackgroundSongIsPlaying(true);
@@ -38,18 +40,33 @@ export const LandingPage: React.FC = () => {
     };
 
     const handleOnNah = () => {
+        console.log('NAH');
         backgroundSong.pause();
     };
 
     return (
         <>
             <Column $maxWidth>
-                <Title>Hello gamer</Title>
+                <Title>Hey gamer</Title>
                 <CoolFont>what's good</CoolFont>
                 <YeaText yeaCount={yeaCount} />
                 <Row $centered>
-                    <button onClick={handleOnYea}>yea</button>
-                    <Link to="/cringe" onClick={handleOnNah}>
+                    {yeaCount <= 1 ? (
+                        <button onClick={handleOnYea}>yea</button>
+                    ) : (
+                        <Link
+                            to="/whatsthat"
+                            style={{ textDecoration: 'none' }}
+                        >
+                            whats that
+                        </Link>
+                    )}
+
+                    <Link
+                        to="/cringe"
+                        onClick={handleOnNah}
+                        style={{ textDecoration: 'none' }}
+                    >
                         nah
                     </Link>
                 </Row>
