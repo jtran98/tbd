@@ -1,34 +1,59 @@
+import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import { COLORS } from './utils/consts';
+import { COLORS, Column, Row } from '../utils/components';
+import background from './assets/background.mp3';
 
-export const LandingPage: React.FC<{}> = () => {
+interface IProps {
+    isNah: boolean;
+    setIsNah: (state: boolean) => void;
+}
+
+export const LandingPage: React.FC<IProps> = ({ isNah, setIsNah }) => {
+    const backgroundSong = new Audio(background);
+    backgroundSong.volume = 0.1;
+    backgroundSong.loop = true;
+
+    const handleOnYea = () => {
+        backgroundSong.play();
+        //backgroundSong.pause();
+    };
+
+    const handleOnNah = () => {
+        setIsNah(true);
+        backgroundSong.pause();
+    };
+
     return (
         <>
-            <div>
-                <Title>Henlo gamr</Title>
+            <Column $maxWidth>
+                <Title>Hello gamer</Title>
                 <CoolFont>what's good</CoolFont>
-            </div>
+                <HeroText>you like french bread games???</HeroText>
+                <Row $maxWidth $centered>
+                    <button onClick={handleOnYea}>yea</button>
+                    <button onClick={handleOnNah}>nah</button>
+                </Row>
+            </Column>
         </>
     );
 };
 
 const Title = styled.div`
+    display: flex;
+    justify-content: center;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-size: 86px;
+`;
+
+const HeroText = styled.div`
+    font-size: 80px;
     width: 100%;
     display: flex;
     justify-content: center;
-
-    font-family: Comic Sans MS, Comic Sans, cursive;
-    font-size: 86px;
-    font-weight: bold;
     color: ${COLORS.cool};
-    width: 100%;
 `;
 
 const CoolFont = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
     text-align: center;
     text-decoration: underline;
     font-size: 32px;
@@ -45,7 +70,7 @@ const CoolFont = styled.div`
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: rainbow_animation 6s ease-in-out infinite;
+    animation: rainbow_animation 4.5s ease-in-out infinite;
     background-size: 400% 100%;
 
     @keyframes rainbow_animation {

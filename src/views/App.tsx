@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { LandingPage } from './MainPage/LandingPage';
 
 export const App: React.FC = () => {
-    return <LandingPage />;
+    const [isNah, setIsNah] = useState(false);
+    return <LandingPage isNah={isNah} setIsNah={setIsNah} />;
 };
