@@ -7,7 +7,7 @@ const SCarouselWrapper = styled.div`
 `;
 
 interface ICarouselSlide {
-    activez?: boolean;
+    active?: boolean;
 }
 
 const SCarouselSlide = styled.div<ICarouselSlide>`
