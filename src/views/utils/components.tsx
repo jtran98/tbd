@@ -48,41 +48,11 @@ export const SmallText = styled.div<{ $font?: string }>`
             : ''}
 `;
 
-export const Column = styled.div<{
-    $centered?: boolean;
-    $maxWidth?: boolean;
-    $maxHeight?: boolean;
-}>`
-    display: flex;
-    flex-direction: column;
-
-    ${({ $centered }) =>
-        $centered
-            ? css`
-                  justify-content: center;
-                  align-items: center;
-              `
-            : ''};
-
-    ${({ $maxWidth }) =>
-        $maxWidth
-            ? css`
-                  width: 100%;
-              `
-            : ''};
-
-    ${({ $maxHeight }) =>
-        $maxHeight
-            ? css`
-                  height: 100vh;
-              `
-            : ''};
-`;
-
 export const Row = styled.div<{
     $centered?: boolean;
     $maxWidth?: boolean;
     $maxHeight?: boolean;
+    $gap?: number;
 }>`
     display: flex;
     flex-direction: row;
@@ -107,6 +77,21 @@ export const Row = styled.div<{
                   height: 100vh;
               `
             : ''};
+    ${({ $gap }) =>
+        $gap
+            ? css`
+                  gap: ${$gap}px;
+              `
+            : ''};
+`;
+
+export const Column = styled(Row)<{
+    $centered?: boolean;
+    $maxWidth?: boolean;
+    $maxHeight?: boolean;
+    $gap?: number;
+}>`
+    flex-direction: column;
 `;
 
 export const getWindowDimensions = () => {

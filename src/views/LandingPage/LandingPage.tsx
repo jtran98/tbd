@@ -6,6 +6,7 @@ import {
     COLORS,
     Column,
     HugeText,
+    MediumText,
     Row,
     ShakeWrapper,
     SmallText
@@ -65,9 +66,14 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
                 <Title>Hey gamer</Title>
                 <CoolFont>what's good</CoolFont>
                 <YeaText yeaCount={yeaCount} />
-                <Row $centered>
+                <Row $centered $gap={50}>
                     {yeaCount < MAX_YEA ? (
-                        <button onClick={handleOnYea}>yea</button>
+                        <>
+                            <YeaAnchor onClick={handleOnYea}>yea</YeaAnchor>
+                            <StyledLink to="/cringe" onClick={handleOnNah}>
+                                nah
+                            </StyledLink>
+                        </>
                     ) : (
                         <>
                             <SpeechBubble>
@@ -77,18 +83,19 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
                                     </TBDText>
                                 </ShakeWrapper>
                             </SpeechBubble>
-                            <Link to="/info" style={{ textDecoration: 'none' }}>
-                                whats that
-                            </Link>
+                            <SpeechBubbleLinksContainer>
+                                <StyledLink
+                                    to="/info"
+                                    style={{ textDecoration: 'none' }}
+                                >
+                                    what's that???
+                                </StyledLink>
+                                <StyledLink to="/cringe" onClick={handleOnNah}>
+                                    nah
+                                </StyledLink>
+                            </SpeechBubbleLinksContainer>
                         </>
                     )}
-                    <Link
-                        to="/cringe"
-                        onClick={handleOnNah}
-                        style={{ textDecoration: 'none' }}
-                    >
-                        nah
-                    </Link>
                 </Row>
             </Column>
             <Image $visibilityStage={yeaCount} src={FullMika} />
@@ -96,6 +103,35 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
         </Container>
     );
 };
+
+const SpeechBubbleLinksContainer = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    display: flex;
+    gap: 30px;
+`;
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    font-family: Courier;
+    font-size: 3em;
+    color: ${COLORS.lightPurple};
+    padding: 0.5em 1em;
+    border: 5px solid ${COLORS.lightPurple};
+`;
+
+const YeaAnchor = styled.a`
+    :hover {
+        cursor: pointer;
+    }
+    text-decoration: none;
+    font-family: Courier;
+    font-size: 3em;
+    color: ${COLORS.lightPurple};
+    padding: 0.5em 1em;
+    border: 5px solid ${COLORS.lightPurple};
+`;
 
 const TBDText = styled(BigText)`
     color: ${COLORS.cool};
@@ -113,7 +149,7 @@ const SpeechBubble = styled.div`
     animation: fadeIn 0.8s ease-out;
     position: absolute;
     top: 30%;
-    right: 10%;
+    left: 33%;
     border-radius: 4em;
     background: ${COLORS.darkPurple};
     padding: 30px 100px;
@@ -156,17 +192,28 @@ const Image = styled.img<{ $visibilityStage: number }>`
 const Title = styled(BigText)`
     display: flex;
     justify-content: center;
-    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-family: Impact;
+    color: ${COLORS.darkPurple};
+    text-shadow: -1px -1px 0px #000, 0px -1px 0px #000, 1px -1px 0px #000,
+        -1px 0px 0px #000, 1px 0px 0px #000, -1px 1px 0px #000, 0px 1px 0px #000,
+        1px 1px 0px #000, -2px -2px 0px #000, -1px -2px 0px #000,
+        0px -2px 0px #000, 1px -2px 0px #000, 2px -2px 0px #000,
+        2px -1px 0px #000, 2px 0px 0px #000, 2px 1px 0px #000, 2px 2px 0px #000,
+        1px 2px 0px #000, 0px 2px 0px #000, -1px 2px 0px #000, -2px 2px 0px #000,
+        -2px 1px 0px #000, -2px 0px 0px #000, -2px -1px 0px #000;
 `;
 
-const HeroText = styled(HugeText)`
+const HeroText = styled(MediumText)`
+    font-family: Courier;
     display: flex;
     justify-content: center;
     color: ${COLORS.cool};
     width: 99%;
+    padding: 2em 0em;
 `;
 
 const CoolFont = styled(SmallText)`
+    padding: 2em 0em;
     text-align: center;
     text-decoration: underline;
     font-family: Comic Sans MS, Comic Sans, cursive;
