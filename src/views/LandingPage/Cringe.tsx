@@ -30,6 +30,7 @@ export const Cringe: React.FC = () => {
 
 const CringeText = styled(BigText)<{ $screenHeight: number }>`
     background: ${COLORS.cool};
+    color: ${COLORS.orange};
     padding: 2em 5em 2.5em 5em;
     font-family: verdana;
     ${({ $screenHeight }) =>

@@ -114,11 +114,12 @@ const SpeechBubbleLinksContainer = styled.div`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    font-family: Courier;
+    font-family: courier;
     font-size: 3em;
     color: ${COLORS.lightPurple};
     padding: 0.5em 1em;
     border: 5px solid ${COLORS.lightPurple};
+    z-index: 1;
 `;
 
 const YeaAnchor = styled.a`
@@ -126,11 +127,12 @@ const YeaAnchor = styled.a`
         cursor: pointer;
     }
     text-decoration: none;
-    font-family: Courier;
+    font-family: courier;
     font-size: 3em;
     color: ${COLORS.lightPurple};
     padding: 0.5em 1em;
     border: 5px solid ${COLORS.lightPurple};
+    z-index: 1;
 `;
 
 const TBDText = styled(BigText)`
@@ -171,7 +173,7 @@ const SpeechBubble = styled.div`
 `;
 
 const Container = styled.div`
-    background: #003da8;
+    background: ${COLORS.darkBlue};
     margin: -8px;
 `;
 
@@ -204,7 +206,7 @@ const Title = styled(BigText)`
 `;
 
 const HeroText = styled(MediumText)`
-    font-family: Courier;
+    font-family: courier;
     display: flex;
     justify-content: center;
     color: ${COLORS.cool};

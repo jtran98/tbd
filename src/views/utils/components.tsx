@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 export enum COLORS {
+    darkBlue = '#003da8',
     cool = '#8CF5F9',
+    red = '#DC143C',
     orange = '#c75600',
     darkPurple = '#610095',
-    lightPurple = '#f4deff'
+    lightPurple = '#f4deff',
+    darkGray = '#5a5a5a'
 }
 
 export const HugeText = styled.div<{ $font?: string }>`
