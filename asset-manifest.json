@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/tbd/static/js/main.6fa274a4.js",
+    "static/js/787.e9a31f4d.chunk.js": "/tbd/static/js/787.e9a31f4d.chunk.js",
+    "static/media/Background.mp3": "/tbd/static/media/Background.80d40a85691018b91103.mp3",
+    "static/media/Bonk.gif": "/tbd/static/media/Bonk.db51ba8929765647aba9.gif",
+    "static/media/FullMika.png": "/tbd/static/media/FullMika.f45458fba6c6acfbeb06.png",
+    "static/media/Locals1.jpg": "/tbd/static/media/Locals1.c2eed1a22a5c7f4c7bb5.jpg",
+    "static/media/Locals2.jpg": "/tbd/static/media/Locals2.311c0c0cc32592d73177.jpg",
+    "static/media/Knuckles.png": "/tbd/static/media/Knuckles.e770ee55c05955a624a2.png",
+    "static/media/Kouma.png": "/tbd/static/media/Kouma.5fc0c70b765c43615ea7.png",
+    "static/media/TheLadies.png": "/tbd/static/media/TheLadies.684520f84bd008ec156e.png",
+    "index.html": "/tbd/index.html",
+    "main.6fa274a4.js.map": "/tbd/static/js/main.6fa274a4.js.map",
+    "787.e9a31f4d.chunk.js.map": "/tbd/static/js/787.e9a31f4d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.6fa274a4.js"
+  ]
+}
