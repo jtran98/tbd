@@ -5,7 +5,6 @@ import {
     BigText,
     COLORS,
     Column,
-    HugeText,
     MediumText,
     Row,
     ShakeWrapper,

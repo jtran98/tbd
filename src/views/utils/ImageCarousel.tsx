@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { COLORS, SmallText } from './components';
+import { COLORS } from './components';
 
 const SCarouselWrapper = styled.div`
     display: flex;

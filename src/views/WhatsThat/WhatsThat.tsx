@@ -16,7 +16,6 @@ import { ImageCarousel } from '../utils/ImageCarousel';
 import Locals1 from '../assets/Locals1.jpg';
 import Locals2 from '../assets/Locals2.jpg';
 import { useState } from 'react';
-import Info from '../assets/Info.png';
 interface IProps {
     backgroundSong: HTMLAudioElement;
 }
