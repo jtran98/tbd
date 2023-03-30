@@ -10,7 +10,7 @@ export const App: React.FC = () => {
     backgroundSong.loop = true;
 
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Switch>
                 <Route path="/" exact>
                     <LandingPage backgroundSong={backgroundSong} />
