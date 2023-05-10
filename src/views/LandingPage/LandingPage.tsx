@@ -59,6 +59,8 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
         backgroundSong.pause();
     };
 
+    console.log("no secrets here", new Date());
+    
     return (
         <Container>
             <Column $maxWidth $maxHeight>
