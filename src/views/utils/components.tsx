@@ -88,12 +88,7 @@ export const Row = styled.div<{
             : ''};
 `;
 
-export const Column = styled(Row)<{
-    $centered?: boolean;
-    $maxWidth?: boolean;
-    $maxHeight?: boolean;
-    $gap?: number;
-}>`
+export const Column = styled(Row)`
     flex-direction: column;
 `;
 
