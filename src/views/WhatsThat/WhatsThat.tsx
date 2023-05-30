@@ -11,10 +11,7 @@ import {
 import TheLadies from '../assets/TheLadies.png';
 import Kouma from '../assets/Kouma.png';
 import Knuckles from '../assets/Knuckles.png';
-import { ImageCarousel } from '../utils/ImageCarousel';
 
-import Locals1 from '../assets/Locals1.jpg';
-import Locals2 from '../assets/Locals2.jpg';
 import { useState } from 'react';
 interface IProps {
     backgroundSong: HTMLAudioElement;
@@ -85,15 +82,13 @@ export const WhatsThat: React.FC<IProps> = ({ backgroundSong }) => {
                     ))}
                     <KnucklesImage src={Knuckles} />
                 </Incentives>
-                {!shouldShowMoreInfo ? (
-                    <MoreInfoButton
-                        onClick={() => {
-                            setShouldShowMoreInfo(true);
-                        }}
-                    >
-                        sounds cool, more info please
-                    </MoreInfoButton>
-                ) : null}
+                <MoreInfoButton
+                    onClick={() => {
+                        setShouldShowMoreInfo(true);
+                    }}
+                >
+                    sounds cool, more info please
+                </MoreInfoButton>
 
                 <Spacer />
                 <DiscordAnchor
@@ -106,15 +101,6 @@ export const WhatsThat: React.FC<IProps> = ({ backgroundSong }) => {
             </MainContentContainer>
             <LadiesImage src={TheLadies} />
             <KoumaImage src={Kouma} />
-            <ImageCarouselContainer>
-                <ImageCarousel
-                    labelText="the peeps (this could be you!!)"
-                    children={[
-                        <CarouselImage src={Locals1} alt="" />,
-                        <CarouselImage src={Locals2} alt="" />
-                    ]}
-                />
-            </ImageCarouselContainer>
         </Column>
     );
 };
@@ -155,9 +141,7 @@ const MoreInfoButton = styled.button`
 `;
 
 const ImageCarouselContainer = styled(Column)`
-    position: absolute;
-    bottom: 10%;
-    right: -10%;
+    position: relative;
     font-weight: bold;
     color: ${COLORS.orange};
 `;

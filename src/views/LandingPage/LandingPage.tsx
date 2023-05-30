@@ -59,51 +59,68 @@ export const LandingPage: React.FC<IProps> = ({ backgroundSong }) => {
         backgroundSong.pause();
     };
 
-    console.log("no secrets here", new Date());
-    
+    console.log('no secrets here', new Date());
+
     return (
         <Container>
             <Column $maxWidth $maxHeight>
                 <Title>Hey gamer</Title>
                 <CoolFont>what's good</CoolFont>
-                <YeaText yeaCount={yeaCount} />
-                <Row $centered $gap={50}>
-                    {yeaCount < MAX_YEA ? (
-                        <>
-                            <YeaAnchor onClick={handleOnYea}>yea</YeaAnchor>
-                            <StyledLink to="/cringe" onClick={handleOnNah}>
-                                nah
-                            </StyledLink>
-                        </>
-                    ) : (
-                        <>
-                            <SpeechBubble>
-                                <ShakeWrapper $shakeSpeed={0.25}>
-                                    <TBDText>
-                                        then come on down to tbd!!!!
-                                    </TBDText>
-                                </ShakeWrapper>
-                            </SpeechBubble>
-                            <SpeechBubbleLinksContainer>
-                                <StyledLink
-                                    to="/info"
-                                    style={{ textDecoration: 'none' }}
-                                >
-                                    what's that???
-                                </StyledLink>
+                <GradientBackground>
+                    <YeaContainer>
+                        <YeaText yeaCount={yeaCount} />
+                    </YeaContainer>
+                    <Row $centered $gap={50}>
+                        {yeaCount < MAX_YEA ? (
+                            <>
+                                <YeaAnchor onClick={handleOnYea}>yea</YeaAnchor>
                                 <StyledLink to="/cringe" onClick={handleOnNah}>
                                     nah
                                 </StyledLink>
-                            </SpeechBubbleLinksContainer>
-                        </>
-                    )}
-                </Row>
+                            </>
+                        ) : (
+                            <>
+                                <SpeechBubble>
+                                    <ShakeWrapper $shakeSpeed={0.25}>
+                                        <TBDText>
+                                            then come on down to tbd!!!!
+                                        </TBDText>
+                                    </ShakeWrapper>
+                                </SpeechBubble>
+                                <SpeechBubbleLinksContainer>
+                                    <StyledLink
+                                        to="/info"
+                                        style={{ textDecoration: 'none' }}
+                                    >
+                                        what's that???
+                                    </StyledLink>
+                                    <StyledLink
+                                        to="/cringe"
+                                        onClick={handleOnNah}
+                                    >
+                                        nah
+                                    </StyledLink>
+                                </SpeechBubbleLinksContainer>
+                            </>
+                        )}
+                    </Row>
+                </GradientBackground>
             </Column>
-            <Image $visibilityStage={yeaCount} src={FullMika} />
-            {yeaCount === 0 ? <SneakyText>shhhhhhhhhhhhh</SneakyText> : null}
+            {yeaCount > 0 ? (
+                <Image $visibilityStage={yeaCount} src={FullMika} />
+            ) : null}
         </Container>
     );
 };
+
+const GradientBackground = styled.div`
+    background: linear-gradient(
+        90deg,
+        rgba(38, 0, 103, 1) 0%,
+        rgba(5, 0, 174, 1) 47%,
+        rgba(85, 0, 255, 1) 100%
+    );
+`;
 
 const SpeechBubbleLinksContainer = styled.div`
     position: absolute;
@@ -121,6 +138,11 @@ const StyledLink = styled(Link)`
     padding: 0.5em 1em;
     border: 5px solid ${COLORS.lightPurple};
     z-index: 1;
+`;
+
+const YeaContainer = styled(Column)`
+    width: 50%;
+    margin: auto;
 `;
 
 const YeaAnchor = styled.a`
@@ -152,7 +174,7 @@ const SpeechBubble = styled.div`
     animation: fadeIn 0.8s ease-out;
     position: absolute;
     top: 30%;
-    left: 33%;
+    left: 35%;
     border-radius: 4em;
     background: ${COLORS.darkPurple};
     padding: 30px 100px;
@@ -176,20 +198,16 @@ const SpeechBubble = styled.div`
 const Container = styled.div`
     background: ${COLORS.darkBlue};
     margin: -8px;
-`;
-
-const SneakyText = styled(SmallText)`
-    position: absolute;
-    top: 130%;
-    left: 35%;
+    overflow: none;
 `;
 
 const Image = styled.img<{ $visibilityStage: number }>`
-    position: absolute;
+    position: fixed;
     top: ${({ $visibilityStage }) =>
-        css`calc(100% - ${$visibilityStage} * 25%)`};
+        css`calc(100% - ${$visibilityStage} * 40% + 40%)`};
     transition: all 1s;
     transition-timing-function: ease-out;
+    overflow: none;
 `;
 
 const Title = styled(BigText)`
