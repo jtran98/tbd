@@ -3,6 +3,7 @@ import {
     BigText,
     COLORS,
     Column,
+    CoolFont,
     MediumText,
     Row,
     SmallText
@@ -35,7 +36,7 @@ export const WhatsThat: React.FC<IProps> = ({ backgroundSong }) => {
 
     return (
         <Column $centered>
-            {shouldShowMoreInfo ? (
+            {/**shouldShowMoreInfo ? (
                 <MoreInfoContainer>
                     <MoreInfoText>
                         Location: St. Michael's College (Brennan Hall{' '}
@@ -66,6 +67,26 @@ export const WhatsThat: React.FC<IProps> = ({ backgroundSong }) => {
                         ok thanks
                     </MoreInfoButton>
                 </MoreInfoContainer>
+            ) : null */}
+            {shouldShowMoreInfo ? (
+                <MoreInfoContainer>
+                    <MoreInfoText>pee pee poo poo</MoreInfoText>
+                    <MoreInfoText>no locals right now to go to</MoreInfoText>
+                    <Spacer />
+                    <MoreInfoText>
+                        check out: <StyledCoolFont>Stun City</StyledCoolFont>{' '}
+                        and <StyledCoolFont>Incendium</StyledCoolFont> for
+                        weekly/monthly events
+                    </MoreInfoText>
+                    <Spacer />
+                    <MoreInfoButton
+                        onClick={() => {
+                            setShouldShowMoreInfo(false);
+                        }}
+                    >
+                        oh ok
+                    </MoreInfoButton>
+                </MoreInfoContainer>
             ) : null}
 
             <Row>
@@ -92,11 +113,72 @@ export const WhatsThat: React.FC<IProps> = ({ backgroundSong }) => {
 
                 <Spacer />
                 <DiscordAnchor
-                    href="https://discord.gg/bqUwyNX"
+                    href="https://discord.gg/beesKMsNF3"
                     target="_blank"
                     rel="noreferrer"
                 >
                     &gt;join the east canada french bread discord&lt;
+                </DiscordAnchor>
+                <DiscordAnchor
+                    href="https://discord.gg/xxrhmq8"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    &gt;join the montreal air dashers discord&lt;
+                </DiscordAnchor>
+                <DiscordAnchor
+                    href="https://discord.gg/QmKRhtx82u"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    &gt;join the saguenay discord&lt;
+                </DiscordAnchor>
+                <DiscordAnchor
+                    href=" https://discord.gg/z9Dv8jYdqY"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    &gt;join the ottawa discord and get a free shawarma
+                    (lie)&lt;
+                </DiscordAnchor>
+                <DiscordAnchor
+                    href="https://discord.gg/fSeMcwF"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    &gt;join the windsor discord&lt;
+                </DiscordAnchor>
+                <DiscordAnchor
+                    href="https://discord.gg/af5GEktdkU"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    &gt;L O N D O N&lt; <Spacer>O</Spacer>
+                    <Spacer>N</Spacer>
+                    <Spacer>D</Spacer>
+                    <Spacer>O</Spacer>
+                    <Spacer>N</Spacer>
+                </DiscordAnchor>
+                <DiscordAnchor
+                    href="https://discord.com/invite/4jXNxXm"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    &gt;Incendium (Toronto)&lt;
+                </DiscordAnchor>
+                <DiscordAnchor
+                    href="https://discord.gg/6qdRAqwdgF"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    &gt;Toronto Top Tiers (Japan)&lt;
+                </DiscordAnchor>
+                <DiscordAnchor
+                    href="https://discord.gg/fYYgAAC7J4"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    &gt;waterPOO (last place for a reason)&lt;
                 </DiscordAnchor>
             </MainContentContainer>
             <LadiesImage src={TheLadies} />
@@ -138,16 +220,6 @@ const MoreInfoButton = styled.button`
     border: 5px solid ${COLORS.orange};
     color: ${COLORS.red};
     width: fit-content;
-`;
-
-const ImageCarouselContainer = styled(Column)`
-    position: relative;
-    font-weight: bold;
-    color: ${COLORS.orange};
-`;
-
-const CarouselImage = styled.img`
-    width: 400px;
 `;
 
 const DescriptionText = styled(BigText)``;
@@ -213,4 +285,9 @@ const KoumaImage = styled.img`
 
 const KnucklesImage = styled.img`
     width: 300px;
+`;
+
+const StyledCoolFont = styled(CoolFont)`
+    padding: 1em;
+    font-size: 1em;
 `;

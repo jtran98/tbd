@@ -5,6 +5,7 @@ import {
     BigText,
     COLORS,
     Column,
+    CoolFont,
     MediumText,
     Row,
     ShakeWrapper,
@@ -232,36 +233,4 @@ const HeroText = styled(MediumText)`
     color: ${COLORS.cool};
     width: 99%;
     padding: 2em 0em;
-`;
-
-const CoolFont = styled(SmallText)`
-    padding: 2em 0em;
-    text-align: center;
-    text-decoration: underline;
-    font-family: Comic Sans MS, Comic Sans, cursive;
-    letter-spacing: 5px;
-    background: linear-gradient(
-        to right,
-        #6666ff,
-        #0099ff,
-        #00ff00,
-        #ff3399,
-        #6666ff
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: rainbow_animation 4.5s ease-in-out infinite;
-    background-size: 400% 100%;
-
-    @keyframes rainbow_animation {
-        0%,
-        100% {
-            background-position: 0 0;
-        }
-
-        50% {
-            background-position: 100% 0;
-        }
-    }
 `;
