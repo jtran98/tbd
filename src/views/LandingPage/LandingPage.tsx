@@ -136,6 +136,7 @@ const StyledLink = styled(Link)`
     font-size: 3em;
     color: ${COLORS.lightPurple};
     padding: 0.5em 1em;
+    margin: 1em;
     border: 5px solid ${COLORS.lightPurple};
     z-index: 1;
 `;
