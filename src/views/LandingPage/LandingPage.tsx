@@ -8,8 +8,7 @@ import {
     CoolFont,
     MediumText,
     Row,
-    ShakeWrapper,
-    SmallText
+    ShakeWrapper
 } from '../utils/components';
 import FullMika from '../assets/FullMika.png';
 
